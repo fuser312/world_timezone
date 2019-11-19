@@ -18,7 +18,11 @@ class WorldTimeZone extends StatelessWidget {
       themeMode: ThemeMode.dark,
       theme: ThemeData(
         brightness: Brightness.light,
-        appBarTheme: AppBarTheme(color: Colors.black)
+        appBarTheme: AppBarTheme(color: Colors.black),
+          canvasColor: Colors.white10,
+          inputDecorationTheme: InputDecorationTheme(
+            fillColor: Colors.deepPurpleAccent,
+          )
       ),
       home: HomePage(),
     );

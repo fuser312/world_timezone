@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:world_timezone/main.dart';
 class SelectLocationScreen extends StatefulWidget {
   final List allLocations;
   SelectLocationScreen(this.allLocations);
@@ -7,7 +7,7 @@ class SelectLocationScreen extends StatefulWidget {
   _SelectLocationScreenState createState() => _SelectLocationScreenState();
 }
 
-  final TextEditingController textController = TextEditingController();
+  final textController = TextEditingController();
 
 class _SelectLocationScreenState extends State<SelectLocationScreen> {
 
@@ -24,10 +24,13 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
         appBar: AppBar(
           title: TextField(
-            controller: textController,
+            controller : textController,
+            decoration: InputDecoration(
+              hintText: "Search Regions",
+              icon: Icon(Icons.search, color: Colors.white,)
+            ),
             cursorColor: Colors.white,
             style: TextStyle(color: Colors.red),
 
@@ -63,5 +66,15 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
         ),
       ),
     );
+
   }
+  @override
+  void dispose() {
+//    myController.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
 }
+
+
