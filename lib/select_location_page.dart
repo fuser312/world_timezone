@@ -33,7 +33,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
         ),
         body: Center(
           child: ListView.builder(
-              itemCount: widget.allLocations.where((x) => x.contains(textController.text)).toList().length,
+              itemCount: widget.allLocations.where((x) => x.toLowerCase().contains(textController.text)).toList().length,
               itemBuilder: (context, index){
                 return ListTile(
                   onTap: () {
@@ -51,7 +51,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                   dense: true,
                   title: Center(
                     child: Text(
-                        widget.allLocations.where((x) => x.contains(textController.text)).toList()[index]),
+                        widget.allLocations.where((x) => x.toLowerCase().contains(textController.text)).toList()[index]),
                   ),
                 );
               }

@@ -63,7 +63,6 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text('Select Time Zone'),
           backgroundColor: Colors.black,
-          centerTitle: true,
         ),
         body: Center(
           child: Column(
@@ -71,12 +70,12 @@ class _HomePageState extends State<HomePage> {
               ListTile(
                 title: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Center(child: Text('Region', style: TextStyle(fontSize: 24, color: Colors.white70),)),
+                  child: Text('Region', style: TextStyle(fontSize: 24, color: Colors.white70),),
                 ),
                 subtitle:
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Center(child: Text('${widget.location}  ${getTimeZone(widget.location)}', style: TextStyle(fontSize: 24, color: Colors.white70),)),
+                  child: Text('${widget.location}  ${getTimeZone(widget.location)}', style: TextStyle(fontSize: 16, color: Colors.white70),),
                 ),
                 onTap: () async {
                   dynamic newLocation = await showSearch(
@@ -129,14 +128,33 @@ class _HomePageState extends State<HomePage> {
     @override
     Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
-    return Container();
+      List results = allLocations
+          .where((cityName) => cityName.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+      return ListView.builder(
+        itemCount: results.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            onTap: () {
+              query = results[index];
+            },
+            dense: true,
+            title: Center(
+              child: Text(
+                results[index],
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          );
+        },
+      );
     }
 
     @override
     Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
     List results = allLocations
-        .where((cityName) => cityName.toLowerCase().contains(query))
+        .where((cityName) => cityName.toLowerCase().contains(query.toLowerCase()))
         .toList();
     return ListView.builder(
      itemCount: results.length,
