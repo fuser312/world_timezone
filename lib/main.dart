@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:timezone/standalone.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   var byteData =
   await rootBundle.load('packages/timezone/data/$tzDataDefaultFilename');
   initializeDatabase(byteData.buffer.asUint8List());
@@ -17,12 +16,10 @@ class WorldTimeZone extends StatelessWidget {
     return MaterialApp(
       themeMode: ThemeMode.dark,
       theme: ThemeData(
-        brightness: Brightness.light,
-        appBarTheme: AppBarTheme(color: Colors.black),
-          canvasColor: Colors.white10,
-          inputDecorationTheme: InputDecorationTheme(
-            fillColor: Colors.deepPurpleAccent,
-          )
+        brightness: Brightness.dark,
+          primaryColor: Colors.black,
+          accentColor: Colors.cyan[600],
+
       ),
       home: HomePage(),
     );
@@ -65,6 +62,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.black,
         appBar: AppBar(
           title: Text('Select Time Zone'),
+          backgroundColor: Colors.black,
           centerTitle: true,
         ),
         body: Center(
@@ -103,20 +101,7 @@ class _HomePageState extends State<HomePage> {
 
   LocationsSearch(this.cities);
 
-  @override
-    ThemeData appBarTheme(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
 
-    return theme.copyWith(
-      primaryColor: theme.primaryColor,
-      primaryIconTheme: theme.primaryIconTheme,
-      primaryColorBrightness: theme.primaryColorBrightness,
-      primaryTextTheme: theme.primaryTextTheme,
-
-
-    );
-
-    }
 
     @override
     List<Widget> buildActions(BuildContext context) {
@@ -166,7 +151,15 @@ class _HomePageState extends State<HomePage> {
       },
      );
     }
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    // TODO: implement appBarTheme
+
+    return ThemeData.dark();
+  }
    }
+
+
 
 
 
