@@ -131,6 +131,7 @@ class _HomePageState extends State<HomePage> {
       List results = allLocations
           .where((cityName) => cityName.toLowerCase().contains(query.toLowerCase()))
           .toList();
+      results.sort();
       return ListView.builder(
         itemCount: results.length,
         itemBuilder: (context, index) {
@@ -156,6 +157,7 @@ class _HomePageState extends State<HomePage> {
     List results = allLocations
         .where((cityName) => cityName.toLowerCase().contains(query.toLowerCase()))
         .toList();
+    results.sort();
     return ListView.builder(
      itemCount: results.length,
      itemBuilder: (context, index) {

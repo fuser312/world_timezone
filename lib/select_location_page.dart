@@ -51,7 +51,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                   dense: true,
                   title: Center(
                     child: Text(
-                        widget.allLocations.where((x) => x.toLowerCase().contains(textController.text)).toList()[index]),
+                        widget.allLocations.where((x) => x.contains(textController.text)).toList()[index]),
                   ),
                 );
               }
